@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Nomin Park** built this app as a Free app. This SERVICE is provided by the Developer and is intended for use as is.
+This SERVICE is provided by the Developer and is intended for use as is.
 
 ## 1. Information Collection and Use
 This app does not collect, store, process, or transmit any personal data of the user. All operations and data processing are performed strictly locally on your device.
