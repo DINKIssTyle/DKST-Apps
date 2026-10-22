@@ -1,3 +1,43 @@
+## DKST GIF Converter
+
+<div align="center">
+  <img src="Apps/DKST-GIF-Converter/Appicon.png" width="128">
+</div>
+<div align="center">
+  <img src="Apps/Platform/windows.png" width="24">
+  <img src="Apps/Platform/apple.png" width="24">
+  <img src="Apps/Platform/linux.png" width="24">
+<br></div>
+
+### This is a multi-functional tool that can convert video clips to GIF, WebP, and WebM. It offers features such as cropping, resizing, trimming, background transparency, along with simple sticker and text overlay options.
+
+#### Key Features
+- Single segment In/Out editing, automatic FPS/speed calculation, manual frame count/delay
+- Auto-zoom selected segment, precise trim by holding handles, vertical playback line navigation on track
+- Handle drag crop, aspect ratio lock/independent height/scale resize
+- Korean multi-line captions with emojis, font/color/background/shadow styles, time display and drag position editing
+- Move/scale/rotate with text/sticker selection handles. Shift for horizontal move, aspect ratio scale, 5-degree rotation
+- 157 stickers across 6 categories, import transparent images (PNG/JPEG/WebP/GIF/BMP)
+- Frame-by-frame movement, J/K/L navigation and playback looping
+- Switch between Settings / Overlays in the right sidebar
+- Forward/Reverse/ping-pong, GIF loop count and last frame wait
+- 2-256 color settings for Ordered/Error Diffusion, gifski high-quality auto coloring
+- Default enabled GIF playback compatibility mode: resamples short frames while maintaining one cycle length
+- Output to GIF/MP4/WebP/WebM and switch format-specific Settings, maintaining common and format-specific values
+- WebP lossy/lossless · quality · compression effort · repeat settings, MP4 (H.264)/WebM (VP9) quality · encoding speed
+- GIF/WebP transparent background: retain original alpha or remove specified color, set color/HEX · frame dropper · tolerance range, select opaque background color
+- Preview image/video before saving, check actual size/resolution, explicit Save, Undo
+- Confirm cycle time · frame count · loop count recorded in the final GIF
+
+
+
+### Download
+[GIF Converter Download](https://github.com/DINKIssTyle/DKST-Apps/releases#release-GIFConverter)
+
+
+
+<div><br><br><br></div>
+
 ## DKST Wikiviewer
 
 <div align="center">
