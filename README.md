@@ -6,7 +6,7 @@
 <div align="center">
   <img src="Apps/Platform/windows.png" width="24">
   <img src="Apps/Platform/apple.png" width="24">
-  <!--<img src="Apps/Platform/linux.png" width="24">-->
+  <img src="Apps/Platform/linux.png" width="24">
 <br><br></div>
 
 **English** · [한국어](Apps/DKST-X-Plane-Ortho-Editor/README.ko.md) · [한국어 사용자 매뉴얼](Apps/DKST-X-Plane-Ortho-Editor/user-guide.ko.md)
