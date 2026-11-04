@@ -37,7 +37,9 @@ DKST X-Plane Ortho Editor is a desktop application for browsing X-Plane Ortho sc
 
 
 ## Download
-[https://github.com/DINKIssTyle/DKST-Apps/releases/tag/xporthoeditor](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/xporthoeditor)
+[X-Plane Ortho Editor Download](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/xporthoeditor)
+
+<div><br><br><br></div>
 
 
 ## DKST GIF Converter
