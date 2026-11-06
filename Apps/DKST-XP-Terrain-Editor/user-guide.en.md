@@ -1,4 +1,4 @@
-# DKST X-Plane Ortho Editor User Guide
+# DKST XP Terrain Editor User Guide
 
 [Feature overview](./README.md) · [한국어 사용자 매뉴얼](./user-guide.ko.md) · Version 0.17.0
 
@@ -6,10 +6,21 @@
 
 1. To browse installed scenery in **Library**, set the X-Plane installation path in Settings. Add your Ortho4XP source folders if the original meshes live separately from the scenery.
 2. To open a standalone tile, switch to **Work folder** and click **Open work folder**. Select the Ortho tile folder. Include its `dkst` directory when moving an existing project.
+
 3. Select a tile in the left panel. Define an area on the map and use **Work area**, or switch to **Whole tile**.
 4. Open **In-app editing** and select vertices or faces. Use **Save** to write the mesh and editing state. Use **Build DSF** when you want to apply the result to X-Plane scenery.
 
-A folder containing an Ortho4XP `.mesh` supports terrain editing and mesh output. Imagery and DSF output require the corresponding existing scenery assets.
+An Ortho tile containing an existing DSF, `terrain` and `textures` can be edited without an original `.mesh`. Click **Start in-app editing**, **In-app editing**, or **Edit in external tool**: on first edit, the app extracts the physical terrain from the current DSF and retains `source/base.dsf` and `source/source.mesh` under `dkst/tiles/<coordinate>`. Saved edits resume when the folder is reopened. Existing imagery, materials and water are retained. An Ortho4XP `.cfg` is optional: if present, its `normal_map_strength` is used; if absent, edited normals are calculated from terrain geometry at standard strength **1**. A mesh-only folder still supports terrain editing and mesh output; DSF output needs the existing scenery assets.
+
+The **Work folder list** contains only editing projects with a `dkst` directory. It checks Custom Scenery, registered external scenery packs and grouping folders within the configured X-Plane installation. Listing projects does not read mesh contents or modify scenery files. Disabled scenery packs can still appear as editing projects.
+
+- Sections appear as **Pinned → Recent (up to 5) → All projects**. Use the pin icon to pin/unpin a folder; the current folder has its own pin control at the top.
+- The current folder appears at the top and is excluded from all three lists to avoid duplicates. Select its tiles in the top area.
+- Search filters folder names, paths and tile coordinates across all three lists. Opening an entry loads that folder's saved work; unsaved edits trigger the existing save confirmation.
+- Pins and recent history persist across app restarts. Pinned folders are excluded from Recent to avoid duplicates. **Clear recent** removes history only, leaving pins, folders and editing files intact.
+- External work folders are also remembered. They remain in **All projects** after falling out of the last five recent entries or clearing recent history. **Remove from list** removes their pin, recent and external-list records without deleting the folder or editing files.
+- A recorded folder or `dkst` location that cannot be found is shown struck through with **Location not found**. Click the row to select the moved work folder and reconnect its pin and history to the new path. Locations without `dkst` are rejected; no files are moved.
+- Pin and remove buttons appear on row hover or keyboard focus. Refresh the list or return focus to the app to recheck paths. Standalone mode skips installation discovery while retaining recorded external projects.
 
 ## 2. View and camera
 
@@ -56,24 +67,42 @@ Numeric fields—including elevation, Soft Selection range, brush diameter, and 
 
 Each field respects its minimum and maximum values. In US mode, gestures adjust the displayed feet value. These modifiers are separate from the fixed elevation increments used by the viewport's Y-axis move handle.
 
-### Sun light and upper scenery
+### Sun light and overlays
 
-Enable **Display → Sun light** to show the time slider at the bottom centre of the viewport. Adjust the time to inspect sunlight and shadows on terrain and buildings. Supported building LM night textures also respond to the time. Lighting and time are preview settings and do not change terrain elevations or DSF edits.
+Enable **Display → Sun light** to show the time slider at the bottom centre of the viewport. Adjust the time to inspect sunlight and shadows on terrain and buildings. Supported building LM night textures also respond to the time. Shadow samples compare depth on the actual receiver plane to reduce self-shadow banding. Daytime sky fill and ground bounce improve visibility on shaded and steep terrain while retaining sun direction and shadow contrast. Lighting and time are preview settings and do not change terrain elevations or DSF edits.
 
-Open the viewport's **Upper scenery** card and enable **Show upper scenery** to display higher-priority OBJ and FAC buildings as references. Toggle individual packs and adjust **Render distance** and **LOD quality**. Disabled scenery packs are excluded; library-pack assets are used to resolve placed buildings. Type 2 facades may use simplified geometry. The card reports unsupported placements and asset problems. Upper scenery is display-only and is excluded from terrain selection, editing, mesh output, and DSF generation.
+Click **Display → Overlays**, immediately to the right of **Sun light**, to open the shared card on the left. Enable **Show upper scenery** to display higher-priority OBJ and FAC buildings as references. Toggle individual packs and adjust **Render distance** and **LOD quality**. Disabled scenery packs are excluded; library-pack assets are used to resolve placed buildings. Type 2 facades may use simplified geometry. The card reports unsupported placements and asset problems. Upper scenery is display-only and is excluded from terrain selection, editing, mesh output, and DSF generation.
+
+Enable **Airport layout** in the Overlays card to read the active airport definitions from the configured X-Plane installation. Runways (including water runways and helipads) are shown in gold/blue, taxiway and apron pavement in cyan, and airport boundaries as dashed green outlines. **Color fill**, **Outlines** and **Opacity** control the display. Pavement curves and interior holes are preserved; names and source-file paths identify the displayed airports. Disabled packs are ignored, and higher-priority airport definitions replace lower-priority definitions as a whole.
+
+Airport layouts are draped onto the current terrain and follow height edits. Airport elevation and flattening settings never modify the mesh. The initial implementation shows reference geometry rather than X-Plane pavement textures, markings, lights or buildings. It requires a configured X-Plane installation with standalone mode disabled. No matching layout or missing installation produces a message in the card. The overlay remains visible when the card is closed; this is a temporary viewport setting.
+
+In the same card, enable **OSM map** to drape OpenStreetMap over the loaded terrain. Adjust **Opacity** to compare it with imagery. Internet access is needed for uncached tiles. Resolution adapts to the work area, with at most 16 requested tiles; selecting a smaller work area gives more detail. Attribution stays visible while the map is displayed, including when the card is closed.
+
+Use **Open GeoTIFF** to load a local `.tif`/`.tiff` with EPSG:4326/WGS84 geographic coordinates and affine georeferencing. The image is positioned automatically on the terrain; north-up and rotated affine rasters, PixelIsArea/PixelIsPoint, RGB and single-band grayscale images are supported. A single band is stretched over its valid range; NoData pixels are transparent. Only the overlapping read window is decoded, using internal overviews when available. Other coordinate systems require reprojection before opening. Files without coordinates, without overlap, or with an oversized read window produce a message in the card. Show/hide, replace/remove the image and adjust opacity independently from OSM. The file is read locally and is not uploaded.
+
+OSM and GeoTIFF are display-only reference layers. They follow terrain height edits but never enter terrain picking, saved mesh geometry, or DSF output. Closing the card leaves enabled layers visible. These raster selections are temporary viewport settings; reopening the app requires opening the GeoTIFF again.
 
 ## 3. Select and edit elevations
 
-1. Choose **Vertices** or **Faces**. Editing a face elevation moves its shared vertices, so adjoining faces that use those vertices also move.
+1. Choose **Vertices (Z)**, **Edges (X)**, or **Faces (C)**. Editing a face elevation moves its shared vertices, so adjoining faces that use those vertices also move.
 2. Under **Selection**, choose **Brush**, **Rectangle**, **Polygon**, or **Click**. Use `Shift` to add and `Ctrl/Cmd` to subtract. Use `[` and `]` to change the selection brush size.
 3. To finish a polygon, place at least three points and right-click or press `Enter`. You can also click near the starting point when the preview snaps to it.
 4. Enter an elevation in the selection card or use **Flatten** to set the selected vertices to their median elevation. **Elevation labels** show elevations at the north, south, east, west, and center of the selection.
 5. Enable the **Y-axis move handle** and drag the green arrow to adjust elevation. Hold `Ctrl` for 0.1 m increments or `Shift` for 1 m increments.
 6. For a gradual transition, enable **Soft Selection** in the selection card and set its range in the displayed units. The effect falls off with distance from the selection, and the viewport shows the affected area.
 
-The selection shape remembers its last-used value and defaults to **Brush** when no preference has been saved. Vertex and face selection always includes occluded components.
+The selection shape remembers its last-used value and defaults to **Brush** when no preference has been saved. Vertex, edge, and face selection always includes occluded components.
 
-Click **Deselect** below the viewport summary to clear the current selection. To reuse a selection, give it a name in the right-hand **Selection Manager** and save it there. Each entry shows whether it contains vertices or faces. You can recall, rename, update, or delete it. Saving the tile includes these selections in the project.
+Click **Deselect** below the viewport summary to clear the current selection. To reuse a selection, give it a name in the right-hand **Selection Manager** and save it there. Each entry shows whether it contains vertices, edges, or faces. You can recall, rename, update, or delete it. Saving the tile includes these selections in the project.
+
+### Edge and connected-chain selection
+
+In **Edges (X)** mode, Click selects the edge closest to the cursor. Brush, Rectangle, and Polygon are also available; Shift adds and Ctrl/Cmd subtracts. Selected edges appear orange. Internal render-triangulation diagonals of N-gons are excluded.
+
+Set **Connection angle** in the edge card and click **Select connected edges** to extend the selection along the closest continuation at each endpoint. Angles use actual 3D directions; lower thresholds follow straighter chains. The last connection angle is remembered. Edge selections can be stored, recalled, renamed, updated, and deleted in Selection Manager. Cuts and subdivisions can invalidate saved edges, which are then reported as missing.
+
+Elevation editing, Flatten, and the Y-axis handle affect the shared endpoints of selected edges, moving adjoining faces too. Selection limits in Height, Smooth, and Paint use the selected edge vertices.
 
 ## 4. Edit mesh topology
 
@@ -137,12 +166,38 @@ To round the top edge of raised terrain:
 
 1. Select its top faces in **Faces** mode. **Normal Break Selection** can help separate them from the side slopes.
 2. Open **Bevel** and review the width suggested from the selection size. Start with **Inside 100%** for an inward cutback.
-3. Preview with **Roundness 100%** and **Segments 4**, then adjust the result. Even at 100% inside, the calculation retains contact with the adjacent slope to round the top corner.
+3. Preview with **Roundness 100%** and the default **Segments 1**. Increase the segment count when you need a denser curved surface. Even at 100% inside, the calculation retains contact with the adjacent slope to round the top corner.
 4. Contacts shrink locally in narrow or concave regions, so the actual transition width there can be smaller than the nominal input.
 
 Choose **Preview bevel** to inspect blue faces/wireframe and the original orange outline. Review changed/added vertex counts, then choose **Apply bevel**. Changing the selection or settings requires a new preview. Apply stays unavailable when no slope change produces a modified vertex.
 
 Results that affect water/material seams, open boundaries, protected vertices, or the work-area boundary are rejected. Contact widths are reduced locally where a narrow or concave region limits the available surface. Shared terrain vertices are retained; this is a terrain transition operation rather than a general solid-model bevel. Apply is one undo step. Topology changes reset the existing paint state. Saving and DSF output include the result.
+
+### Edge Bevel — wall-to-ground corners
+
+Use **Edges (X)** to round specific edges rather than the entire outline of selected faces.
+
+1. Enable **Wireframe** and select the edges where a wall meets the ground. Extend a chain with **Select connected edges** if needed.
+2. Open **Bevel** below **Flatten** in the selection card, review the suggested width, and choose **Preview bevel**.
+3. In edge mode, **Flatter side (%)** allocates the width toward the less steep of the two adjoining faces. Start at 50% and adjust the balance. Face mode retains **Inside (%)**.
+4. Adjust **Roundness** and **Segments** and inspect the blue transition strip and original orange edges. Convex corners are cut back; concave ground corners are filled between the adjoining surfaces.
+5. Apply the preview. Subdivided edges along the original selected chains remain selected. One Undo reverses the operation.
+
+The effect tapers at open chain ends to meet the surrounding terrain. Water/material seams, open mesh boundaries, protected vertices, and work-area boundaries remain protected. Mesh saves and DSF builds include the result.
+
+### Vertex Bevel — rounded peaks and depressions
+
+Use **Vertices (Z)** to round a pointed pyramid or a sharp depression.
+
+1. Select the apex vertex, then open **Bevel** below **Flatten** in its selection card. Up to 64 vertices can be processed together.
+2. Set **Bevel radius** in the active m/ft units, **Roundness**, and **Segments**. Vertex mode does not use the Inside/Flatter side setting.
+3. Choose **Preview bevel**. The operation adds conforming geometry around the point and forms a curved cap: the center becomes flatter while the outside contact follows the original slope. The peak can become lower, and a depression can become shallower.
+4. The radius can span multiple neighboring faces, independently of existing vertex spacing. Protected terrain/material boundaries, the work area, and other selected caps limit it. The cap uses the actual outside slope at its contact to avoid a new shoulder crease.
+5. Apply the preview. The original vertices stay selected. One Undo reverses both refinement and elevation changes; saves and DSF builds include the result.
+
+Turning junctions in face/edge Bevel blend the adjoining sections into a shared corner patch. Vertex caps also use a two-dimensional corner patch instead of retaining angular fan ridges. These are geometry changes and do not depend on UV preservation.
+
+Existing vertex XY positions and elevations outside each cap stay unchanged. Adjacent selected caps are kept separate. Flat regions do not change. Open boundaries and water/material seams are protected. Refinement shares the existing Bevel/brush process; the segment count controls target spacing, with a 0.1 m minimum.
 
 ### N-gons and vertex removal
 
@@ -188,7 +243,7 @@ Set **Preferences → Maximum backups** to a value from 1 to 1,000. The default 
 
 ### Apply edits to X-Plane
 
-1. Click **Build DSF** in **In-app editing**. Verify the source Ortho scenery folder. For a mesh-only project, specify the folder containing the tile's existing DSF, `terrain`, `textures`, and Ortho4XP configuration.
+1. Click **Build DSF** in **In-app editing**. Verify the source Ortho scenery folder. For a mesh-only project, specify the folder containing the tile's existing DSF, `terrain`, and `textures`.
 2. Follow the status and progress. Expand **Build console** to view detailed logs; it opens automatically on an error. Completion shows a success status and the actual DSF and backup paths. Longer instructions are under **Build information**, and footer buttons remain visible while the body scrolls. The new DSF uses the normal tile filename under the scenery's `Earth nav data` directory.
 3. Reload the scenery in X-Plane and inspect the edited area. The editor's viewport Y-axis Scale has no effect on the DSF elevations.
 
@@ -199,6 +254,8 @@ During a DSF build, coordinate precision is increased automatically if quantizat
 This workflow updates an existing Ortho DSF. Initial DSF generation from a standalone mesh, imagery downloads, and new coastlines or bathymetry require a separate Ortho4XP workflow.
 
 ### Build error locations and reports
+
+Knife, subdivision, Bevel, and other topology changes share a cumulative limit of 50 records. When the limit message appears, use **Build DSF** to apply the edits, then select the **Current** DSF under **DSF backups** on the right and click **Edit selected DSF** to continue from the new baseline. Saving or restarting alone does not reset the count. The previous workspace is retained in `dkst/archive`.
 
 When a DSF build fails, **Go to problem** and **Generate report** appear below the error. Go to problem focuses the camera without shrinking the current work area. If needed, it expands the area to include the existing scope and a 250m margin around the problem, so neighboring faces remain editable. Whole-tile mode is retained. The location button is disabled for file or configuration errors without a reliable geometry location.
 
@@ -228,13 +285,13 @@ Mode and camera shortcuts are inactive while typing in numeric/text fields or us
 | `Q`·`E` / `R`·`F` | Rotate horizontally / vertically |
 | `+` / `−` | Zoom in / out |
 | `H` | Fit selection |
-| `Z` / `X` | Switch to Vertices / Faces mode |
+| `Z` / `X` / `C` | Switch to Vertices / Edges / Faces mode |
 | `F1` | Toggle Top view / previous camera position, orientation, projection and zoom |
 | Hold `1` + left drag | Pan |
 | Hold `2` + left drag | Zoom: right/up to zoom in, left/down to zoom out |
 | Hold `3` + left drag | Rotate the view |
 | `M` | Switch Metric / US units |
-| `Ctrl/Cmd+A` | Select all in the current vertex or face mode |
+| `Ctrl/Cmd+A` | Select all in the current vertex, edge, or face mode |
 | `Ctrl/Cmd+S` | Save |
 | `Ctrl/Cmd+Shift+S` | Save as |
 | `Ctrl/Cmd+Z` / `Ctrl/Cmd+Shift+Z` | Undo / Redo |
@@ -249,6 +306,7 @@ Mode and camera shortcuts are inactive while typing in numeric/text fields or us
 | **Preserve protected boundary vertex elevations and positions** | Compare the OBJ patch outline with the original. Use the inspection results to check whether the external editor changed the axes, units, or origin. |
 | **New face crosses a source imagery or water boundary** | Inspect the logged coordinates and how the new faces meet the source material or water boundary. The build can split some material crossings and stops if validation fails. |
 | **Gaps, overlaps, or T-junctions** | Check that both sides of each shared edge use matching vertices and that faces do not overlap. |
+| **Dense stripes appear when Sun light is enabled** | This can indicate self-shadow depth-comparison artifacts. Disable Texture and Wireframe and compare Sun light on/off. If the issue persists, include both views, the sun time, and Y-axis Scale in your report. |
 | **Spacing or width changes after changing the selection** | A new selection recalculates defaults from its horizontal size. Manual input remains unchanged for the same selection. Check for unintentionally selected distant faces if a suggested value looks unexpected. |
 | **Apply bevel is unavailable** | Preview the current selection/settings and check the changed vertex count. Terrain without a slope change may produce no changes. Changing the selection or settings requires another preview. |
 | **Progress stops with an error** | The operation failed. Read the final console error. A successful operation shows a completion status and the actual output path. |

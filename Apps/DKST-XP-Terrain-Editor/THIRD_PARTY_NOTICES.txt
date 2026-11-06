@@ -1,4 +1,4 @@
-DKST X-Plane Ortho Editor — Third-party notices
+DKST XP Terrain Editor — Third-party notices
 
 Ortho4XP — Oscar Pilote
 Original project copyright: Oscar Pilote 2014–2018, as stated in its upstream notice.
