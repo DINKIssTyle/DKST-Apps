@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>measurement metric</title>
+  <rect x="2.5" y="6" width="19" height="8" rx="1" fill="currentColor" fill-opacity=".14"/>
+  <path d="M6.5 6v3.5M10.2 6v2.2M13.8 6v2.2M17.5 6v3.5"/>
+  <path d="M4 18.5h16m-13.5-2-2.5 2 2.5 2m11-4 2.5 2-2.5 2"/>
+</svg>

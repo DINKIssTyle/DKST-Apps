@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>water surface</title>
+  <path d="M2.5 9.5c2.5-2.5 4.5 2.5 7 0s4.5 2.5 7 0 3.5 1.8 5 0v9a2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2Z" fill="currentColor" fill-opacity=".16"/>
+  <path d="M2.5 9.5c2.5-2.5 4.5 2.5 7 0s4.5 2.5 7 0 3.5 1.8 5 0"/>
+  <path d="M2.5 14c2.5-2.2 4.5 2.2 7 0s4.5 2.2 7 0 3.5 1.6 5 0"/>
+  <path d="M5 18h4m5 0h5" opacity=".7"/>
+</svg>

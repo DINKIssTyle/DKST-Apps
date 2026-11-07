@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>height tool</title>
+  <ellipse cx="12" cy="18.5" rx="9" ry="2.8" stroke-dasharray="2 2" opacity=".65"/>
+  <path d="M3 18.5c3.5 0 5-7.5 9-7.5s5.5 7.5 9 7.5Z" fill="currentColor" fill-opacity=".22"/>
+  <path d="M12 2.5v8.5m-3-5.5 3-3 3 3m-2.5 5 2.5 2.5 2.5-2.5"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>terrain</title>
+  <path d="m2 19 6.5-11 4.5 5.5 3.5-4.5L22 19Z" fill="currentColor" fill-opacity=".16"/>
+  <path d="m8.5 8 2 11L2 19ZM16.5 9l1 10H22Z" fill="currentColor" fill-opacity=".26"/>
+  <path d="m2 19 6.5-11 4.5 5.5 3.5-4.5L22 19ZM8.5 8l2 11m2.5-5.5-2.5 5.5m6-10-3.5 10"/>
+</svg>

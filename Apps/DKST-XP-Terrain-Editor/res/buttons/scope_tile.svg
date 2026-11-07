@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>scope tile</title>
+  <path d="M12 4.5 21 9.8 12 15 3 9.8Z" fill="currentColor" fill-opacity=".26"/>
+  <path d="M3 9.8v3.7L12 18.8l9-5.3V9.8" fill="currentColor" fill-opacity=".12"/>
+  <path d="M7.5 7.15 16.5 12.4M16.5 7.15 7.5 12.4" opacity=".65"/>
+  <path d="M6 2.5H2.5V6M18 2.5h3.5V6M2.5 18v3.5H6M21.5 18v3.5H18"/>
+</svg>
