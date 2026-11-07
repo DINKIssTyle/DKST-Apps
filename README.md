@@ -1,7 +1,7 @@
-## DKST X-Plane Ortho Editor
+## DKST XP Terrain Editor
 
 <div align="center">
-  <img src="Apps/DKST-X-Plane-Ortho-Editor/appicon.png" width="128">
+  <img src="Apps/DKST-XP-Terrain-Editor/appicon.png" width="128">
 </div>
 <div align="center">
   <img src="Apps/Platform/windows.png" width="24">
@@ -9,11 +9,11 @@
   <img src="Apps/Platform/linux.png" width="24">
 <br><br></div>
 
-**English** · [한국어](Apps/DKST-X-Plane-Ortho-Editor/README.ko.md) · [한국어 사용자 매뉴얼](Apps/DKST-X-Plane-Ortho-Editor/user-guide.ko.md)
+**English** · [한국어](Apps/DKST-XP-Terrain-Editor/README.ko.md) · [한국어 사용자 매뉴얼](Apps/DKST-XP-Terrain-Editor/user-guide.ko.md)
 
 DKST X-Plane Ortho Editor is a desktop application for browsing X-Plane Ortho scenery and editing terrain elevations and mesh topology. You can save an edited tile as a full Ortho4XP `.mesh` or apply the edits to an existing scenery DSF. This documentation covers version 0.14.0.
 
-**[User guide](Apps/DKST-X-Plane-Ortho-Editor/user-guide.en.md)**
+**[User guide](Apps/DKST-XP-Terrain-Editor/user-guide.en.md)**
 
 ## Features
 
@@ -37,7 +37,7 @@ DKST X-Plane Ortho Editor is a desktop application for browsing X-Plane Ortho sc
 
 
 ## Download
-[X-Plane Ortho Editor Download](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/xporthoeditor)
+[X-Plane DKST XP Terrain Editor Download](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/XPTerrainEditor)
 
 <div><br><br><br></div>
 
