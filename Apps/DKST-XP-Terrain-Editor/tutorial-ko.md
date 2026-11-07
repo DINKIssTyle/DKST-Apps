@@ -12,9 +12,9 @@ DKST XP Terrain Editor(이하 앱)를 실행했을 때 보이는 화면입니다
 - **Maximum backup**: 작업 타일의 최대 백업 개수를 지정합니다.
 - **OBJ editing application**: 외부 편집 시 3D 앱을 바로 연결하려면 지정합니다.
 - **Right-drag rotation**: 마우스 우클릭 드래그 시 뷰포트 이동 방식을 설정합니다.
-  - Look rotation: X-Plane 내부에서 사용하는 방식입니다.
-  - Orbit around cursor only on selection: 선택한 지점을 기준으로 뷰포트를 이동합니다.
-  - Orbit around cursor: 커서 지점을 기준으로 뷰포트를 이동합니다.
+  - **Look rotation**: X-Plane 내부에서 사용하는 방식입니다.
+  - **Orbit around cursor only on selection**: 선택한 지점을 기준으로 뷰포트를 이동합니다.
+  - **Orbit around cursor**: 커서 지점을 기준으로 뷰포트를 이동합니다.
 - **Use OpenStreetMap background**: 지도를 탐색하기 위해 OSM 온라인 지도를 이용할 수 있습니다. 이 옵션이 꺼져 있으면 오프라인 Natural Earth world map을 사용하여 단순하지만 강력한 벡터 지도를 이용할 수 있습니다.
 
 
@@ -60,13 +60,13 @@ X-Plane 폴더가 지정되면 앱은 X-Plane 12의 \Global Scenery, \Custom Sce
 X-Plane의 지형은 3D 메시(Mesh)로 구성되어 있으며, 이 메시지는 삼각형으로 이루어져 있습니다. 정점(Vertex)과 정점 사이의 선(Edge)들이 그려지고, 이 선들이 모여 면(Face)을 형성합니다. 면이 세 개의 정점을 가지면 삼각형입니다. 하지만 정점이 세 개를 초과하면 N각형이라고 부릅니다. 우리 앱은 편집 편의성을 위해 N각형을 지원하며, DSF로 빌드할 때 자동으로 삼각형으로 변환합니다.
 
 ![](res/ie_mode_1.webp)
-세 가지 편집 모드를 지원합니다.
+**세 가지 편집 모드를 지원합니다.**
 - **정점(Vertices)**: 정점을 선택하고 편집할 수 있습니다.
 - **모서리(Edges)**: 선을 선택하고 편집할 수 있습니다.
 - **면(Faces)**: 면을 선택하고 편집할 수 있습니다.
 
 ![](res/ie_tool_1.webp)
-- 편집 모드를 선택하고, Tools에서 Selection을 선택하세요.
+- 편집 모드를 선택하고, **Tools**에서 **Selection**을 선택하세요.
 Selection은 모드에 따라 다음과 같은 방식으로 선택할 수 있습니다.  
   - **공통**: Brush, Rectangle, Polygon, Click
   - **Faces**: Normal Break Selection 
@@ -77,5 +77,36 @@ Selection은 모드에 따라 다음과 같은 방식으로 선택할 수 있습
 - **Click**: 클릭 한 번으로 개별적으로 선택합니다.
 - Faces에서 사용 가능한 **Normal Break Selection**: 면의 노말 각도에 따라 선택 영역을 지정합니다.
 
+![](res/ie_tool_2.webp)
+
+**선택도구에 사용할 수 있는 옵션**
+- **Y-axis move handle**: 고도를 직접 조정할 수 있는 핸들을 표시합니다.
+- **Elevation lables**: 편집자가 고도를 확인할 수 있도록 고도를 표시합니다.  
+![](res/ie_tool_3.webp)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
