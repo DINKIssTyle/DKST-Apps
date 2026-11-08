@@ -37,7 +37,7 @@ DKST X-Plane Ortho Editor is a desktop application for browsing X-Plane Ortho sc
 
 
 ## Download
-[X-Plane DKST XP Terrain Editor Download](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/XPTerrainEditor)
+[XP Terrain Editor Download](https://github.com/DINKIssTyle/DKST-Apps/releases/tag/XPTerrainEditor)
 
 <div><br><br><br></div>
 
